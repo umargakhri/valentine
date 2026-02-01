@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Will You Be My Valentine?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      max-width: 90%;
+    }
+
+    h1 {
+      color: #ff4d6d;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      position: relative;
+      height: 120px;
+    }
+
+    button {
+      padding: 12px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #yesBtn {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #yesBtn:hover {
+      transform: scale(1.1);
+    }
+
+    #noBtn {
+      background: #ccc;
+      position: absolute;
+      left: 55%;
+      top: 60%;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .flowers {
+      font-size: 40px;
+      animation: float 2s infinite alternate;
+    }
+
+    @keyframes float {
+      from { transform: translateY(0); }
+      to { transform: translateY(-15px); }
+    }
+
+    .final-text {
+      font-size: 20px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE 1 -->
+  <div class="card" id="page1">
+    <h1>Will you be my Valentine? ❤️</h1>
+    <div class="buttons">
+      <button id="yesBtn">Yes 💕</button>
+      <button id="noBtn">No 🙄</button>
+    </div>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="card hidden" id="page2">
+    <h1>You said YES! 😍</h1>
+    <div class="flowers">💐 🌹 🌸 🎁 💝</div>
+    <p style="margin-top:20px;">
+      You just made my day ❤️
+    </p>
+    <button id="nextBtn" style="margin-top:20px;background:#ff4d6d;color:white;">
+      Next →
+    </button>
+  </div>
+
+  <!-- PAGE 3 -->
+  <div class="card hidden" id="page3">
+    <h1>Thank You ❤️</h1>
+    <p class="final-text">
+      See you at <strong>19:30</strong> on <strong>14th Feb</strong> 💖<br><br>
+      Bring your <strong>hot dress</strong> with you 😏🔥
+    </p>
+  </div>
+
+<script>
+  const noBtn = document.getElementById("noBtn");
+  const yesBtn = document.getElementById("yesBtn");
+  const page1 = document.getElementById("page1");
+  const page2 = document.getElementById("page2");
+  const page3 = document.getElementById("page3");
+  const nextBtn = document.getElementById("nextBtn");
+
+  function moveNoButton() {
+    const x = Math.random() * 200 - 100;
+    const y = Math.random() * 200 - 100;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+  }
+
+  noBtn.addEventListener("mouseover", moveNoButton);
+  noBtn.addEventListener("touchstart", moveNoButton);
+  window.addEventListener("scroll", moveNoButton);
+
+  yesBtn.addEventListener("click", () => {
+    page1.classList.add("hidden");
+    page2.classList.remove("hidden");
+  });
+
+  nextBtn.addEventListener("click", () => {
+    page2.classList.add("hidden");
+    page3.classList.remove("hidden");
+  });
+</script>
+
+</body>
+</html>
